@@ -1,5 +1,8 @@
 const Joi = require('joi');
-const { addTask } = require('../models/tasks');
+const {
+    addTask,
+    findTasks,
+} = require('../models/tasks');
 const errorHandler = require('../utils/errorHandler');
 
 const taskSchema = Joi.object({
@@ -25,6 +28,13 @@ const addTaskService = async (name, description, date) => {
     };
 };
 
+const findTasksService = async () => {
+    const tasks = await findTasks();
+
+    return tasks;
+};
+
 module.exports = {
     addTaskService,
+    findTasksService,
 };

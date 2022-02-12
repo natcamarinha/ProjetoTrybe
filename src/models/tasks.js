@@ -11,6 +11,19 @@ const addTask = async (name, description, date) => {
     return insertedId;
 };
 
+const findTasks = async () => {
+    const connect = await connection();
+
+    const tasks = await connect
+        .collection('tasks')
+        .find()
+        .toArray();
+    
+    console.log('model', tasks);
+    return tasks;
+};
+
 module.exports = {
     addTask,
+    findTasks,
 };
