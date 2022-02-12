@@ -4,6 +4,7 @@ const {
     addTask,
     findTasks,
     editTaskModel,
+    deleteTask,
 } = require('../models/tasks');
 const errorHandler = require('../utils/errorHandler');
 
@@ -46,8 +47,19 @@ const editTaskService = async ({ id, name, description, date }) => {
     return editTask;
 };
 
+const deleteTaskService = async (id) => {
+    if (!ObjectId.isValid(id)) throw errorHandler(404, 'task not found');
+
+    const removeTask = await deleteTask(id);
+
+    console.log('service', removeTask);
+
+    return removeTask;
+};
+
 module.exports = {
     addTaskService,
     findTasksService,
     editTaskService,
+    deleteTaskService,
 };

@@ -37,10 +37,22 @@ const editTaskModel = async ({ id, name, description, date }) =>{
     
     console.log('model', editTask);
     return editTask.value;
-}
+};
+
+const deleteTask = async (id) => {
+    const connect = await connection();
+
+    const removeTask = await connect
+        .collection('tasks')
+        .findOneAndDelete({ _id: ObjectId(id) });
+    
+    console.log('model', removeTask);
+    return removeTask;
+};
 
 module.exports = {
     addTask,
     findTasks,
     editTaskModel,
+    deleteTask,
 };
