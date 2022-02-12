@@ -1,6 +1,7 @@
 const {
     addTaskService,
     findTasksService,
+    editTaskService,
 } = require('../services/tasks');
 
 const addTaskController = async (req, res, next) => {
@@ -29,7 +30,25 @@ const findTasksController = async (req, res, next) => {
     }
 };
 
+const editTaskController = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const { name, description } = req.body;
+        const date = new Date();
+
+        const newTask = await editTaskService({ id, name, description, date });
+
+        console.log('controller', newTask);
+
+        return res.status(200).json(newTask);
+    } catch (error) {
+        console.log('erro: ', error);
+        next(error);
+    }
+};
+
 module.exports = {
     addTaskController,
     findTasksController,
+    editTaskController,
 };

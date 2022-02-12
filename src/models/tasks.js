@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongodb');
 const connection = require('./connection');
 
 const addTask = async (name, description, date) => {
@@ -23,7 +24,23 @@ const findTasks = async () => {
     return tasks;
 };
 
+const editTaskModel = async ({ id, name, description, date }) =>{
+    const connect = await connection();
+
+    const editTask = await connect
+        .collection('tasks')
+        .findOneAndUpdate(
+            { _id: ObjectId(id) },
+            { $set: { name, description }},
+            { returnOriginal: false },
+        );
+    
+    console.log('model', editTask);
+    return editTask.value;
+}
+
 module.exports = {
     addTask,
     findTasks,
+    editTaskModel,
 };
