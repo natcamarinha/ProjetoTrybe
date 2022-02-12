@@ -4,6 +4,7 @@ const errorHandler = require('../utils/errorHandler');
 const {
     addUser,
     findUsers,
+    findUserByEmail,
 } = require('../models/users');
 
 const userSchema = Joi.object({
@@ -16,6 +17,10 @@ const addUserService = async (name, email, password) => {
     const { error } = userSchema.validate({ name, email, password });
 
     if (error) throw errorHandler(400, error.message);
+
+    const userExits = await findUserByEmail(email);
+
+    if (userExits) throw errorHandler(409, 'Email already registered');
 
     const newUser = await addUser(name, email, password);
 

@@ -8,7 +8,6 @@ const addUser = async (name, email, password) => {
         .insertOne({ name, email, password });
 
     console.log('model', insertedId);
-    
     return insertedId;
 };
 
@@ -22,9 +21,21 @@ const findUsers = async () => {
 
     console.log('model', users);
     return users;
-}
+};
+
+const findUserByEmail = async (email) => {
+    const connect = await connection();
+
+    const userEmail = await connect
+        .collection('users')
+        .findOne({ email });
+    
+    console.log('model', userEmail);
+    return userEmail;
+};
 
 module.exports = {
     addUser,
     findUsers,
+    findUserByEmail,
 };
