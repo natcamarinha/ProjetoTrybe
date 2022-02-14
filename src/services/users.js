@@ -38,7 +38,7 @@ const findUsersService = async () => {
 
     // const { password: _password, ...usersWithoutPassword } = users;
 
-    console.log('service', users);
+    // console.log('service', usersWithoutPassword);
     return { users };
 };
 

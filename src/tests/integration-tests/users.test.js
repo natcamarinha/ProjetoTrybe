@@ -90,3 +90,51 @@ describe('POST /users', () => {
     });
   });
 });
+
+describe('GET /users', () => {
+  let connectionMock;
+
+  before(async () => {
+    connectionMock = await getConnection();
+    sinon.stub(MongoClient, 'connect').resolves(connectionMock);
+  });
+
+  after(async () => {
+    MongoClient.connect.restore();
+  });
+
+  describe('Quando é possível consultar a lista de usuários', () => {
+    let response;
+
+    before(async () => {
+      connectionMock.db('Tasks_Ebytr').collection('users').insertMany([
+        {
+          _id: '61e88aa7152585d9a885f0bb',
+          name: 'user1',
+          email: 'user1@email.com',
+          password: '123456',
+        },
+        {
+          _id: '61e88aa7152585d9a885f0cc',
+          name: 'user2',
+          email: 'user2@email.com',
+          password: '123456',
+        },
+      ]);
+
+      response = await chai.request(server).get('/users');
+    });
+
+    it('retorna o código de status 200', () => {
+      expect(response).to.have.status(200);
+    });
+
+    it('retorna um objeto no body', () => {
+      expect(response.body).to.be.an('object');
+    });
+
+    it('o objeto de resposta deve possuir a propriedade "users"', () => {
+      expect(response.body).to.have.property('users');
+    });
+  });
+});

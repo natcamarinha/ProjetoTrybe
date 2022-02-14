@@ -173,11 +173,9 @@ describe('GET /tasks', () => {
     sinon.stub(MongoClient, 'connect').resolves(connectionMock);
   });
 
-  after(() => {
+  after(async () => {
     MongoClient.connect.restore();
   });
-
-  const TEST_ID = '658de6ded1dd479300cd6aa1';
 
   describe('Quando é possível consultar a lista de receitas', () => {
     let response;
