@@ -7,9 +7,11 @@ const {
     deleteTaskController,
 } = require('../controllers/tasks');
 
-router.post('/tasks', addTaskController);
-router.get('/tasks', findTasksController);
-router.put('/tasks/:id', editTaskController);
-router.delete('/tasks/:id', deleteTaskController);
+const auth = require('../middlewares/auth');
+
+router.post('/tasks', auth, addTaskController);
+router.get('/tasks', auth, findTasksController);
+router.put('/tasks/:id', auth, editTaskController);
+router.delete('/tasks/:id', auth, deleteTaskController);
 
 module.exports = router;

@@ -3,6 +3,7 @@ const {
   loginModel,
 } = require('../models/login');
 const errorHandler = require('../utils/errorHandler');
+const { createToken } = require('./authService');
 
 const loginSchema = Joi.object({
   email: Joi.string().email().required(),
@@ -21,7 +22,11 @@ const loginService = async (email, password) => {
   const { password: _password, ...userWithoutPassword } = user;
 
   console.log('service', userWithoutPassword);
-  return userWithoutPassword;
+
+  const token = await createToken(userWithoutPassword);
+
+  console.log('serviceToken', token);
+  return token;
 };
 
 module.exports = {
