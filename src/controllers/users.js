@@ -11,7 +11,7 @@ const addUserController = async (req, res, next) => {
 
     console.log('controller', newUser);
 
-    return res.status(201).json(newUser);
+    return res.status(201).json({ user: newUser });
   } catch (error) {
     console.log('erro:', error);
     next(error);

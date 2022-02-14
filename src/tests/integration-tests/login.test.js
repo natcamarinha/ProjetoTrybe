@@ -89,10 +89,6 @@ describe('POST /login', () => {
       expect(response).to.be.an('object');
       expect(response.body).to.have.property('message');
     });
-
-    /* it('a propriedade "message" tem o valor "All fields must be filled"', () => {
-      expect(response.body.message).to.be.equal('All fields must be filled');
-    }); */
   });
 
   describe('Quando pessoa usuária não existe ou senha é inválida', () => {
@@ -119,9 +115,5 @@ describe('POST /login', () => {
       expect(response).to.be.an('object');
       expect(response.body).to.have.property('message');
     });
-
-    /* it('a propriedade "message" tem o valor "Incorrect username or password"', () => {
-      expect(response.body.message).to.be.equal('Incorrect username or password');
-    }); */
   });
 });
