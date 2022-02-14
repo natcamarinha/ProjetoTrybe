@@ -10,11 +10,13 @@ const server  = require('../../../index');
 const { getConnection } = require('./mongoMockConnection');
 const { MongoClient } = require('mongodb');
 
+const jwt = require('jsonwebtoken');
+
 describe('POST /login', () => {
   let connectionMock;
 
   const user = {
-    email: 'root@email.com',
+    email: 'user@email.com',
     password: '123456',
   };
 
@@ -22,9 +24,9 @@ describe('POST /login', () => {
     connectionMock = await getConnection();
     sinon.stub(MongoClient, 'connect').resolves(connectionMock);
 
-    // const user = { name: 'user1', email: 'root@email.com', password: '123456' }
-    // const db = connectionMock.db('Tasks_Ebytr');
-    // await db.collection('users').insertOne(user);
+    const user = { name: 'user', email: 'user@email.com', password: '123456' }
+    const db = connectionMock.db('Tasks_Ebytr');
+    await db.collection('users').insertOne(user);
   });
 
   after(async () => {
@@ -49,7 +51,7 @@ describe('POST /login', () => {
       expect(response.body).to.be.an('object');
     });
 
-    /* it('objeto de resposta deve possuir a propriedade "token"', () => {
+    it('objeto de resposta deve possuir a propriedade "token"', () => {
       expect(response).to.be.an('object');
       expect(response.body).to.have.property('token');
     });
@@ -62,8 +64,8 @@ describe('POST /login', () => {
       const token = response.body.token;
       const payload = jwt.decode(token);
 
-      expect(payload.data.email).to.be.equal('email@example.com');
-    }); */
+      expect(payload.data.email).to.be.equal('user@email.com');
+    });
   });
 
   describe('Quando name e/ou email e/ou passaword não são informados', () => {
