@@ -13,7 +13,7 @@ const addTaskController = async (req, res, next) => {
         const newTask = await addTaskService(name, description, date);
 
         console.log('controller', newTask);
-        return res.status(201).json({ tasks: newTask });
+        return res.status(201).json({ task: newTask });
     } catch (error) {
         console.log('err: ', error);
         next(error);
@@ -24,7 +24,7 @@ const findTasksController = async (req, res, next) => {
     try {
         const tasks = await findTasksService();
 
-        return res.status(200).json(tasks);
+        return res.status(200).json({ tasks });
     } catch (error) {
         console.log('erro: ', error);
         next(error);

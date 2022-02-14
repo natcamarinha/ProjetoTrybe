@@ -30,7 +30,7 @@ describe('POST /users', () => {
         .post('/users')
         .send({
           name: 'user',
-          email: 'user@email.com',
+          email: 'user1@email.com',
           password: '123456',
         });
     });
