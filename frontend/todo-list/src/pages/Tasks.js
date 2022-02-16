@@ -1,27 +1,43 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import Context from '../context/Context';
 
 function Tasks() {
-  const [task, setTask] = useState('');
-  const [tasks, setTasks] = useState([]);
+  const {
+    tasks,
+    handleChange,
+    handleClick,
+    updateTask,
+    deleteTask,
+  } = useContext(Context);
 
-  function handleClick() {
-    setTasks([...tasks, task]);
-  };
 
   return (
     <div>
       <h1>Tasks</h1>
       <input 
-        value={ task }
-        onChange={ ({ target }) => setTask(target.value) }/>
+        onChange={ handleChange }/>
       <button
         onClick={ handleClick }
       >
         Adicionar
       </button>
-      <ul>
-        { tasks.map(task => <li>{ task }</li>) }
-      </ul>
+      <div className="list-container">
+        <ul>
+          { tasks.map(task => <li>{ task }
+            <button
+              onClick={(event) => updateTask(event)}
+            >
+              Editar
+            </button>
+            <button
+              onClick={ (index) => deleteTask(index) }
+            >
+              Excluir
+            </button>
+          </li>) }
+        </ul>
+      </div>
+      
     </div>
   )
 };
