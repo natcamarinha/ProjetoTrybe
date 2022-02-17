@@ -93,4 +93,5 @@ Para testar os arquivos separadamente, digite no seu terminal:
 
 Para testar todos os arquivos juntos, digite no seu terminal:
 `npm test`
+
 ---
