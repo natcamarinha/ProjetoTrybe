@@ -30,3 +30,5 @@ Foi utilizado para o desenvolvimento desse projeto React.
 Para testar os arquivos separadamente, digite no seu terminal: `npm test <nome_do_arquivo>`
 
 Para testar todos os arquivos juntos, digite no seu terminal: `npm test`
+
+---
