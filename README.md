@@ -21,3 +21,11 @@ Abra um terminal no seu computador e utilize os comandos a baixo na ordem que s�
 * `cd ProjetoTrybe`
 
 Para mais instruções olhar o README do backend e depois o do frontend.
+
+--- 
+
+#### Projeto desenvolvido por Natalia Camarinha
+
+<a href="https://www.linkedin.com/in/nataliacamarinha/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
+<a href = "mailto:natcamarinha@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+
