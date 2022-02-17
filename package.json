@@ -1,0 +1,46 @@
+{
+  "name": "projetotrybe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "mocha ./src/tests/unit-tests",
+    "dev:test": "mocha ./src/tests/integration-tests/**/*$NAME*.{test,spec}.js --exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/natcamarinha/ProjetoTrybe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/natcamarinha/ProjetoTrybe/issues"
+  },
+  "homepage": "https://github.com/natcamarinha/ProjetoTrybe#readme",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "dotenv": "^16.0.0",
+    "eslint": "^8.9.0",
+    "express": "^4.17.2",
+    "frisby": "^2.1.3",
+    "jest": "^27.5.1",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "lint": "^0.7.0",
+    "mongodb": "^4.3.1"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "eslint-config-trybe-backend": "^1.0.4",
+    "eslint-plugin-import": "^2.25.4",
+    "mocha": "^9.2.0",
+    "mongodb-memory-server": "^6.9.6",
+    "nodemon": "^2.0.15",
+    "nyc": "^15.1.0",
+    "sinon": "^13.0.1"
+  }
+}
